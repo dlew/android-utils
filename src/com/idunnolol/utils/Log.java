@@ -14,7 +14,8 @@ package com.idunnolol.utils;
  * Since the length of debug 
  * 
  * In addition, it provides backwards compatibility for methods added in 
- * later versions of Android (like Log.wtf()).
+ * later versions of Android (like Log.wtf()).  This support goes back to
+ * Android 1.5.
  * 
  * There are two warnings about using this class.  The first is that it's not
  * a full replacement of Log - there are some methods in android.util.Log that
@@ -88,19 +89,6 @@ public class Log {
 
 	//////////////////////////////////////////////////////////////////////////
 	// Logging
-
-	// Tells whether the wtf() method is available or not
-	private static boolean mWtfAvailable;
-
-	static {
-		try {
-			android.util.Log.class.getMethod("wtf", String.class, String.class);
-			mWtfAvailable = true;
-		}
-		catch (NoSuchMethodException unused) {
-			mWtfAvailable = false;
-		}
-	}
 
 	public static int v(String msg) {
 		return (sLevel <= VERBOSE) ? android.util.Log.v(sTag, msg) : -1;
@@ -184,7 +172,7 @@ public class Log {
 
 	public static int wtf(String msg) {
 		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? android.util.Log.wtf(sTag, msg) : -1;
+			return (sLevel <= ERROR) ? WtfWrapper.wtf(sTag, msg) : -1;
 		}
 		else {
 			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, sTag, msg) : -1;
@@ -193,7 +181,7 @@ public class Log {
 
 	public static int wtf(String msg, Throwable tr) {
 		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? android.util.Log.wtf(sTag, msg, tr) : -1;
+			return (sLevel <= ERROR) ? WtfWrapper.wtf(sTag, msg, tr) : -1;
 		}
 		else {
 			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, sTag, msg + '\n'
@@ -203,7 +191,7 @@ public class Log {
 
 	public static int wtf(String tag, String msg) {
 		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? android.util.Log.wtf(tag, msg) : -1;
+			return (sLevel <= ERROR) ? WtfWrapper.wtf(tag, msg) : -1;
 		}
 		else {
 			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, tag, msg) : -1;
@@ -212,7 +200,7 @@ public class Log {
 
 	public static int wtf(String tag, String msg, Throwable tr) {
 		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? android.util.Log.wtf(tag, msg, tr) : -1;
+			return (sLevel <= ERROR) ? WtfWrapper.wtf(tag, msg, tr) : -1;
 		}
 		else {
 			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, tag, msg + '\n'
@@ -259,7 +247,7 @@ public class Log {
 			switch (level) {
 			case ASSERT:
 				if (mWtfAvailable) {
-					bytes += android.util.Log.wtf(tag, substr);
+					bytes += WtfWrapper.wtf(tag, substr);
 				}
 				else {
 					bytes += android.util.Log.println(android.util.Log.ASSERT, tag, substr);
@@ -302,5 +290,41 @@ public class Log {
 
 	public static int println(int priority, String tag, String msg) {
 		return android.util.Log.println(priority, tag, msg);
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// Wrapper for wtf()
+
+	private static boolean mWtfAvailable;
+
+	static {
+		try {
+			WtfWrapper.checkAvailable();
+			mWtfAvailable = true;
+		}
+		catch (Throwable t) {
+			mWtfAvailable = false;
+		}
+	}
+
+	private static class WtfWrapper {
+		static {
+			try {
+				Log.class.getMethod("wtf", String.class, String.class);
+			}
+			catch (Exception ex) {
+				throw new RuntimeException(ex);
+			}
+		}
+
+		public static void checkAvailable() { }
+
+		public static int wtf(String tag, String msg) {
+			return android.util.Log.wtf(tag, msg);
+		}
+
+		public static int wtf(String tag, String msg, Throwable tr) {
+			return android.util.Log.wtf(tag, msg, tr);
+		}
 	}
 }
