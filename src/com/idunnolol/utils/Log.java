@@ -91,121 +91,166 @@ public class Log {
 	// Logging
 
 	public static int v(String msg) {
-		return (sLevel <= VERBOSE) ? android.util.Log.v(sTag, msg) : -1;
+		return log(VERBOSE, sTag, msg);
 	}
 
 	public static int v(String msg, Throwable tr) {
-		return (sLevel <= VERBOSE) ? android.util.Log.v(sTag, msg, tr) : -1;
+		return log(VERBOSE, sTag, msg, tr);
 	}
 
 	public static int v(String tag, String msg) {
-		return (sLevel <= VERBOSE) ? android.util.Log.v(tag, msg) : -1;
+		return log(VERBOSE, tag, msg);
 	}
 
 	public static int v(String tag, String msg, Throwable tr) {
-		return (sLevel <= VERBOSE) ? android.util.Log.v(tag, msg, tr) : -1;
+		return log(VERBOSE, tag, msg, tr);
 	}
 
 	public static int d(String msg) {
-		return (sLevel <= DEBUG) ? android.util.Log.d(sTag, msg) : -1;
+		return log(DEBUG, sTag, msg);
 	}
 
 	public static int d(String msg, Throwable tr) {
-		return (sLevel <= DEBUG) ? android.util.Log.d(sTag, msg, tr) : -1;
+		return log(DEBUG, sTag, msg, tr);
 	}
 
 	public static int d(String tag, String msg) {
-		return (sLevel <= DEBUG) ? android.util.Log.d(tag, msg) : -1;
+		return log(DEBUG, tag, msg);
 	}
 
 	public static int d(String tag, String msg, Throwable tr) {
-		return (sLevel <= DEBUG) ? android.util.Log.d(tag, msg, tr) : -1;
+		return log(DEBUG, tag, msg, tr);
 	}
 
 	public static int i(String msg) {
-		return (sLevel <= INFO) ? android.util.Log.i(sTag, msg) : -1;
+		return log(INFO, sTag, msg);
 	}
 
 	public static int i(String msg, Throwable tr) {
-		return (sLevel <= INFO) ? android.util.Log.i(sTag, msg, tr) : -1;
+		return log(INFO, sTag, msg, tr);
 	}
 
 	public static int i(String tag, String msg) {
-		return (sLevel <= INFO) ? android.util.Log.i(tag, msg) : -1;
+		return log(INFO, tag, msg);
 	}
 
 	public static int i(String tag, String msg, Throwable tr) {
-		return (sLevel <= INFO) ? android.util.Log.i(tag, msg, tr) : -1;
+		return log(INFO, tag, msg, tr);
 	}
 
 	public static int w(String msg) {
-		return (sLevel <= WARN) ? android.util.Log.w(sTag, msg) : -1;
+		return log(WARN, sTag, msg);
 	}
 
 	public static int w(String msg, Throwable tr) {
-		return (sLevel <= WARN) ? android.util.Log.w(sTag, msg, tr) : -1;
+		return log(WARN, sTag, msg, tr);
 	}
 
 	public static int w(String tag, String msg) {
-		return (sLevel <= WARN) ? android.util.Log.w(tag, msg) : -1;
+		return log(WARN, tag, msg);
 	}
 
 	public static int w(String tag, String msg, Throwable tr) {
-		return (sLevel <= WARN) ? android.util.Log.w(tag, msg, tr) : -1;
+		return log(WARN, tag, msg, tr);
 	}
 
 	public static int e(String msg) {
-		return (sLevel <= ERROR) ? android.util.Log.e(sTag, msg) : -1;
+		return log(ERROR, sTag, msg);
 	}
 
 	public static int e(String msg, Throwable tr) {
-		return (sLevel <= ERROR) ? android.util.Log.e(sTag, msg, tr) : -1;
+		return log(ERROR, sTag, msg, tr);
 	}
 
 	public static int e(String tag, String msg) {
-		return (sLevel <= ERROR) ? android.util.Log.e(tag, msg) : -1;
+		return log(ERROR, tag, msg);
 	}
 
 	public static int e(String tag, String msg, Throwable tr) {
-		return (sLevel <= ERROR) ? android.util.Log.e(tag, msg, tr) : -1;
+		return log(ERROR, tag, msg, tr);
 	}
 
 	public static int wtf(String msg) {
-		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? WtfWrapper.wtf(sTag, msg) : -1;
-		}
-		else {
-			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, sTag, msg) : -1;
-		}
+		return log(ASSERT, sTag, msg);
 	}
 
 	public static int wtf(String msg, Throwable tr) {
-		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? WtfWrapper.wtf(sTag, msg, tr) : -1;
-		}
-		else {
-			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, sTag, msg + '\n'
-					+ android.util.Log.getStackTraceString(tr)) : -1;
-		}
+		return log(ASSERT, sTag, msg, tr);
 	}
 
 	public static int wtf(String tag, String msg) {
-		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? WtfWrapper.wtf(tag, msg) : -1;
-		}
-		else {
-			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, tag, msg) : -1;
-		}
+		return log(ASSERT, tag, msg);
 	}
 
 	public static int wtf(String tag, String msg, Throwable tr) {
-		if (mWtfAvailable) {
-			return (sLevel <= ERROR) ? WtfWrapper.wtf(tag, msg, tr) : -1;
+		return log(ASSERT, tag, msg, tr);
+	}
+
+	public static int log(int level, String msg) {
+		return log(level, sTag, msg);
+	}
+
+	public static int log(int level, String tag, String msg) {
+		if (sLevel > level) {
+			return -1;
 		}
-		else {
-			return (sLevel <= ERROR) ? android.util.Log.println(android.util.Log.ASSERT, tag, msg + '\n'
-					+ android.util.Log.getStackTraceString(tr)) : -1;
+
+		switch (level) {
+		case VERBOSE:
+			return android.util.Log.v(tag, msg);
+		case DEBUG:
+			return android.util.Log.d(tag, msg);
+		case INFO:
+			return android.util.Log.i(tag, msg);
+		case WARN:
+			return android.util.Log.w(tag, msg);
+		case ERROR:
+			return android.util.Log.e(tag, msg);
+		case ASSERT:
+			if (mWtfAvailable) {
+				return WtfWrapper.wtf(tag, msg);
+			}
+			else {
+				return android.util.Log.println(android.util.Log.ASSERT, tag, msg);
+			}
 		}
+
+		// Provided invalid level
+		return -1;
+	}
+
+	public static int log(int level, String msg, Throwable tr) {
+		return log(level, sTag, msg, tr);
+	}
+
+	public static int log(int level, String tag, String msg, Throwable tr) {
+		if (sLevel > level) {
+			return -1;
+		}
+
+		switch (level) {
+		case VERBOSE:
+			return android.util.Log.v(tag, msg, tr);
+		case DEBUG:
+			return android.util.Log.d(tag, msg, tr);
+		case INFO:
+			return android.util.Log.i(tag, msg, tr);
+		case WARN:
+			return android.util.Log.w(tag, msg, tr);
+		case ERROR:
+			return android.util.Log.e(tag, msg, tr);
+		case ASSERT:
+			if (mWtfAvailable) {
+				return WtfWrapper.wtf(tag, msg, tr);
+			}
+			else {
+				return android.util.Log.println(android.util.Log.ASSERT, tag,
+						msg + '\n' + android.util.Log.getStackTraceString(tr));
+			}
+		}
+
+		// Provided invalid level
+		return -1;
 	}
 
 	//////////////////////////////////////////////////////////////////////////
