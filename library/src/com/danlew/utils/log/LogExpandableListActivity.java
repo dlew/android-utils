@@ -1,13 +1,11 @@
-package com.idunnolol.utils.log.compat;
+package com.danlew.utils.log;
 
-import com.idunnolol.utils.log.LogBase;
-
+import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
-public class LogFragmentActivity extends FragmentActivity {
+public class LogExpandableListActivity extends ExpandableListActivity {
 
 	// LogBase methods
 
@@ -75,6 +73,12 @@ public class LogFragmentActivity extends FragmentActivity {
 	protected void onStop() {
 		super.onStop();
 		mLogBase.onStop();
+	}
+
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		mLogBase.onRetainNonConfigurationInstance();
+		return super.onRetainNonConfigurationInstance();
 	}
 
 	@Override

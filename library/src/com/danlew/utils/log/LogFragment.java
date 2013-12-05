@@ -1,15 +1,15 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebViewFragment;
 
-public class LogWebViewFragment extends WebViewFragment {
+public class LogFragment extends Fragment {
 
 	// LogBase methods
 

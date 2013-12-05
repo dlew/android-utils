@@ -1,6 +1,6 @@
-package com.idunnolol.utils.log.compat;
+package com.danlew.utils.log.compat;
 
-import com.idunnolol.utils.log.LogBase;
+import com.danlew.utils.log.LogBase;
 
 import android.app.Activity;
 import android.content.res.Configuration;

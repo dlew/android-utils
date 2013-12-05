@@ -1,17 +1,15 @@
-package com.idunnolol.utils.log.compat;
-
-import com.idunnolol.utils.log.LogBase;
+package com.danlew.utils.log;
 
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebViewFragment;
 
-public class LogDialogFragment extends DialogFragment {
+public class LogWebViewFragment extends WebViewFragment {
 
 	// LogBase methods
 

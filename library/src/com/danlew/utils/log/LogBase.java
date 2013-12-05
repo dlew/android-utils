@@ -1,6 +1,6 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
-import com.idunnolol.utils.Log;
+import com.danlew.utils.Log;
 
 import android.app.Activity;
 import android.content.Intent;

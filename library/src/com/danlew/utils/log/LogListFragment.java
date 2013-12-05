@@ -1,15 +1,15 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
 import android.app.Activity;
+import android.app.ListFragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.preference.PreferenceFragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LogPreferenceFragment extends PreferenceFragment {
+public class LogListFragment extends ListFragment {
 
 	// LogBase methods
 

@@ -1,11 +1,11 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
-import android.app.ExpandableListActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 
-public class LogExpandableListActivity extends ExpandableListActivity {
+public class LogPreferenceActivity extends PreferenceActivity {
 
 	// LogBase methods
 

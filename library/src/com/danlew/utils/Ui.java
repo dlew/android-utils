@@ -1,4 +1,4 @@
-package com.idunnolol.utils;
+package com.danlew.utils;
 
 import android.app.Activity;
 import android.app.Fragment;

@@ -1,11 +1,11 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
-import android.app.TabActivity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-public class LogTabActivity extends TabActivity {
+public class LogListActivity extends ListActivity {
 
 	// LogBase methods
 

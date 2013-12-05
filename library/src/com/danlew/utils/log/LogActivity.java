@@ -1,11 +1,11 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
-import android.app.ActivityGroup;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
-public class LogActivityGroup extends ActivityGroup {
+public class LogActivity extends Activity {
 
 	// LogBase methods
 

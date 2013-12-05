@@ -1,15 +1,18 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log.compat;
+
+import com.danlew.utils.log.LogBase;
 
 import android.app.Activity;
-import android.app.DialogFragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 public class LogDialogFragment extends DialogFragment {
+
 	// LogBase methods
 
 	private LogBase mLogBase = new LogBase();

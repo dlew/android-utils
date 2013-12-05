@@ -1,4 +1,4 @@
-package com.idunnolol.utils;
+package com.danlew.utils;
 
 import java.util.HashMap;
 import java.util.Map;

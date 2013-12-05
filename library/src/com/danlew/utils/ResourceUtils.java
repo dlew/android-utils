@@ -1,4 +1,4 @@
-package com.idunnolol.utils;
+package com.danlew.utils;
 
 import java.lang.reflect.Field;
 import java.util.Map;

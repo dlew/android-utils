@@ -1,7 +1,7 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log;
 
 import android.app.Activity;
-import android.app.ListFragment;
+import android.app.DialogFragment;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.AttributeSet;
@@ -9,8 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class LogListFragment extends ListFragment {
-
+public class LogDialogFragment extends DialogFragment {
 	// LogBase methods
 
 	private LogBase mLogBase = new LogBase();

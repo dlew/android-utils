@@ -1,4 +1,4 @@
-package com.idunnolol.utils;
+package com.danlew.utils;
 
 /**
  * Custom implementation of Log that adds extra functionality.  It functions

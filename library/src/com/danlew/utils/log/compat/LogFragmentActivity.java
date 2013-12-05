@@ -1,10 +1,13 @@
-package com.idunnolol.utils.log;
+package com.danlew.utils.log.compat;
+
+import com.danlew.utils.log.LogBase;
 
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
-public abstract class LogMapActivity extends com.google.android.maps.MapActivity {
+public class LogFragmentActivity extends FragmentActivity {
 
 	// LogBase methods
 
@@ -75,12 +78,6 @@ public abstract class LogMapActivity extends com.google.android.maps.MapActivity
 	}
 
 	@Override
-	public Object onRetainNonConfigurationInstance() {
-		mLogBase.onRetainNonConfigurationInstance();
-		return super.onRetainNonConfigurationInstance();
-	}
-
-	@Override
 	protected void onRestart() {
 		super.onRestart();
 		mLogBase.onRestart();
@@ -95,7 +92,7 @@ public abstract class LogMapActivity extends com.google.android.maps.MapActivity
 	// Non-lifecycle methods
 
 	@Override
-	public void onNewIntent(Intent intent) {
+	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 		mLogBase.onNewIntent(intent);
 	}
