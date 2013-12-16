@@ -1,7 +1,9 @@
 package com.danlew.utils;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Fragment;
+import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 
@@ -17,11 +19,13 @@ public class Ui {
 		return (T) view.findViewById(id);
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressWarnings("unchecked")
 	public static <T extends Fragment> T findFragment(Activity activity, String tag) {
 		return (T) activity.getFragmentManager().findFragmentByTag(tag);
 	}
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@SuppressWarnings("unchecked")
 	public static <T extends Fragment> T findFragment(Activity activity, int id) {
 		return (T) activity.getFragmentManager().findFragmentById(id);

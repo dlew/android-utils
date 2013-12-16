@@ -1,5 +1,8 @@
 package com.danlew.utils;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 /**
  * Custom implementation of Log that adds extra functionality.  It functions
  * as a complete replacement for Log.
@@ -352,6 +355,7 @@ public class Log {
 		}
 	}
 
+	@TargetApi(Build.VERSION_CODES.FROYO)
 	private static class WtfWrapper {
 		static {
 			try {

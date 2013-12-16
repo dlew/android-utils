@@ -1,14 +1,17 @@
 package com.danlew.utils.log;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ListFragment;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class LogListFragment extends ListFragment {
 
 	// LogBase methods

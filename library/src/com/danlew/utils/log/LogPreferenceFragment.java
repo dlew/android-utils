@@ -1,7 +1,9 @@
 package com.danlew.utils.log;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import android.util.AttributeSet;
@@ -9,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+@TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class LogPreferenceFragment extends PreferenceFragment {
 
 	// LogBase methods
